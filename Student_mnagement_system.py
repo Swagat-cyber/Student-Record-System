@@ -64,33 +64,47 @@ def update_():
         print("ID not found")
 
   except FileNotFoundError:
-    print("File not exisst")        
+    print("File not exisst") 
+
+
+def search():
+    s_id=input("Enter the id of student:\n")
+    with open("customer.txt","r") as f:
+        id_data=f.readline()
+        if not id_data:
+            print("No records found.\n")
+            return
+        
+def delete_():
 
 
 
 
-while True:
-  print("Welcome to customer potal")
-  print("1. Add new customers.")
-  print("2. Displays customers.")
-  print("3. update customers.")
-  print("4. Display all customers.")
-  print("5. retrieve customers by id.")
-  print("6. exit.")
+    while True:
+        print("1.Add Student")
+        print("2.View Students")
+        print("3.Search Student")
+        print("4.Update Student")
+        print("5.Delete Student")
+        print("6.Exit")
 
-  choice = input("Enter your choice: ")
+        choice = input("Enter your choice: ")
 
-  if choice == "1":
-    add()
-  elif choice == "2":
-    Display_()
-  elif choice == "3":
-    update_()
-  elif choice == "4":
-    delete_()
-  elif choice == "5":
-    print("See you later!!!!!!!!")
-    break
-  else:
-    print("!!!!!!!!!!!---invalid choice-----!!!!!!")
-     
+        if choice == "1":
+            add()
+        elif choice == "2":
+            Display_()
+        elif choice == "3":
+            search()
+        elif choice == "4":
+            update_()
+        elif choice == "5":
+            delete_()
+        elif choice == "6":
+            print("See you later!!!!!!!!")
+            break
+        else:
+            print("!!!!!!!!!!!---invalid choice-----!!!!!!")
+        
+
+            
