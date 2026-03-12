@@ -1,4 +1,96 @@
-def student():
-    print("you are hacker")
+"""
+Store customer information, including name, contact details, and purchase history.
+1) add new records
+2) update existing records
+3) delete records
+4) retrieve records based on specific criteria by id
+5) search records
+
+"""
+
+
+def add():
+  c_name = input("Enter your name: ")
+  c_id = input("Enter your C_Id: ")
+  address = input("Enter your address: ")
+  phone_no = input("Enter your phone number")
+
+  with open("Customer.txt","a") as f:
+    f.write(f"{c_name},{c_id},{address},{phone_no}\n")
+
+  print("You have registered. ")  
+
+def Display_():
+  try:
+    with open("customer.txt","r") as f:
+      data = f.readlines()
+      
+      if not data:
+        print("No records found.\n")
+        return
+      print("\n\t--- customer record ---")
+      for line in data:
+        c_name, c_id, address, phone_no = line.strip().split(",")
+        print(f"Name:\t{c_name}\tID:\t{c_id}\tAddress:\t{address}\tPhone:\t{phone_no}")
+      print()
+  except FileNotFoundError:      
+    print("File not found.\n")
     
-now youa re hacker
+def update_():
+  try:
+    with open("customer.txt","r") as f:
+      data = f.readlines()
+
+    customer_id = input("Enter your id to edit content:")
+    found = False
+    for i in range(len(data)):
+      c_name,c_id,address,phone = data[i].strip().split(",")
+
+      if c_id == customer_id:
+        new_name = input("Enter your new name:")
+        new_addres = input("Enter your new address:")
+        new_phone_no = input("Enter your new phono number:")
+
+        data[i] = c_id,new_name,new_addres,new_phone_no
+        found = True
+        break
+      if found:
+        with open("customer.txt","w") as f:
+          f.writelines(data)
+
+        print("update sucessfullyy!!!!!!")
+
+      else:
+        print("ID not found")
+
+  except FileNotFoundError:
+    print("File not exisst")        
+
+
+
+
+while True:
+  print("Welcome to customer potal")
+  print("1. Add new customers.")
+  print("2. Displays customers.")
+  print("3. update customers.")
+  print("4. Display all customers.")
+  print("5. retrieve customers by id.")
+  print("6. exit.")
+
+  choice = input("Enter your choice: ")
+
+  if choice == "1":
+    add()
+  elif choice == "2":
+    Display_()
+  elif choice == "3":
+    update_()
+  elif choice == "4":
+    delete_()
+  elif choice == "5":
+    print("See you later!!!!!!!!")
+    break
+  else:
+    print("!!!!!!!!!!!---invalid choice-----!!!!!!")
+     
