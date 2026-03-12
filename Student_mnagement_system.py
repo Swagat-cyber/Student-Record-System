@@ -69,11 +69,15 @@ def update_():
 
 def search():
     s_id=input("Enter the id of student:\n")
-    with open("student.txt","r") as f:
+    with open("customer.txt","r") as f:
         id_data=f.readline()
         if not id_data:
             print("No records found.\n")
             return
+        for line in id_data:
+           S_Name, S_id, S_address, S_phone_no = line.strip().split(",")
+           if s_id==line.S_id:
+              print(f"ID:",S_id,"\tName:",S_Name, "\t Address:",S_address,"\tPhone no:",S_phone_no)
         
 def delete_():
     with open("student.txt","r") as f:
