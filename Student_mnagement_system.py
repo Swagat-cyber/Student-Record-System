@@ -10,35 +10,35 @@ Store customer information, including name, contact details, and purchase histor
 
 
 def add():
-  c_name = input("Enter your name: ")
-  c_id = input("Enter your C_Id: ")
+  s_name = input("Enter your name: ")
+  s_id = input("Enter your S_Id: ")
   address = input("Enter your address: ")
   phone_no = input("Enter your phone number")
 
-  with open("Customer.txt","a") as f:
-    f.write(f"{c_name},{c_id},{address},{phone_no}\n")
+  with open("student.txt","a") as f:
+    f.write(f"{s_name},{s_id},{address},{phone_no}\n")
 
   print("You have registered. ")  
 
 def Display_():
   try:
-    with open("customer.txt","r") as f:
+    with open("student.txt","r") as f:
       data = f.readlines()
       
       if not data:
         print("No records found.\n")
         return
-      print("\n\t--- customer record ---")
+      print("\n\t--- Student record ---")
       for line in data:
-        c_name, c_id, address, phone_no = line.strip().split(",")
-        print(f"Name:\t{c_name}\tID:\t{c_id}\tAddress:\t{address}\tPhone:\t{phone_no}")
+        s_name, s_id, address, phone_no = line.strip().split(",")
+        print(f"Name:\t{s_name}\tID:\t{s_id}\tAddress:\t{address}\tPhone:\t{phone_no}")
       print()
   except FileNotFoundError:      
     print("File not found.\n")
     
 def update_():
   try:
-    with open("customer.txt","r") as f:
+    with open("student.txt","r") as f:
       data = f.readlines()
 
     customer_id = input("Enter your id to edit content:")
@@ -55,7 +55,7 @@ def update_():
         found = True
         break
       if found:
-        with open("customer.txt","w") as f:
+        with open("student.txt","w") as f:
           f.writelines(data)
 
         print("update sucessfullyy!!!!!!")
@@ -69,13 +69,15 @@ def update_():
 
 def search():
     s_id=input("Enter the id of student:\n")
-    with open("customer.txt","r") as f:
+    with open("student.txt","r") as f:
         id_data=f.readline()
         if not id_data:
             print("No records found.\n")
             return
         
 def delete_():
+    with open("student.txt","r") as f:
+       lines = f.readlines()
 
 
 
